@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Chat</title>
+
+    <link rel="stylesheet" type="text/css" th:href="@{/style.css}">
+    <script type="text/javascript" th:src="@{/chatScript.js}"></script>
+
+</head>
+<body>
+<section id="wrapper">
+    <article>
+        <!-- okienko chatu - to jest obsługiwane przez JS -->
+        <ul id="messages"></ul>
+        <!-- <li class="message">Wiadomość 1</li>
+             <li class="message">Wiadomość 2</li>
+             <li class="message">Wiadomość 3</li>
+        -->
+        <!-- okienko chatu - to jest obsługiwane przez JS -->
+        <hr/>
+        <!-- formularz do wysyłania wiadomości -->
+        <!-- sendMessage jest z JS, return false - żeby strona
+        nie odświeżała się po kliknięciu enter(wysłanie wiadomości) -->
+        <form onsubmit="sendMessage(); return false;">
+            <input type="text" id="writer" placeholder="Podaj wiadomość">
+        </form>
+        <!-- formularz do wysyłania wiadomości -->
+    </article>
+</section>
+<!--
+messages TO  jest element do wypisywania wiadomości
+writer To jest element do przyjmowania wiadomości z klawiatury (form)
+  -->
+ <script> <!-- JAVA SCRIPT -->
+        messages = document.getElementById("messages");
+        writer = document.getElementById("writer");
+        form = writer.form;
+        window.addEventListener("load", onLoad, false);
+ </script>
+</body>
+</html>

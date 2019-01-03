@@ -1,0 +1,76 @@
+#writer {
+    width: 100%;
+    height: 50px;
+    font-size: 30px;
+    border-radius: 10px;
+    border-style: dashed;
+}
+
+#writer input::placeholder{
+    padding: 5px;
+}
+
+.message {
+    font-weight: normal
+}
+
+.message:before {
+    content: ' '; color: #bbb; font-size: 35px;
+}
+
+
+#messages {
+    overflow: auto;
+    max-height: 150px;
+    list-style: none;
+    padding: 0;
+}
+
+#messages li {
+    margin: 0;
+    padding-left: 30px;
+}
+
+body {
+    font: normal 26px/35px "Helvetica Neue", Helvetica, sans-serif;
+    background: rgb(237, 237, 236);
+    margin: 40px 0 0;
+    padding: 0;
+}
+
+section, header {
+    display: block;
+}
+
+#wrapper {
+    width: 90%;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 10px;
+    border-top: 1px solid #fff;
+    padding-bottom: 16px;
+}
+
+h1 {
+    padding-top: 10px;
+}
+
+h2 {
+    font-size: 100%;
+    font-style: italic;
+}
+
+header, article > * {
+    margin: 10px;
+}
+
+
+
+#html5badge {
+    margin-left: -30px;
+    border: 0;
+}
+
+#html5badge img {
+    border: 0;
+}

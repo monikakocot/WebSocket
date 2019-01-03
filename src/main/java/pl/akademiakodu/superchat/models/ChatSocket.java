@@ -1,6 +1,7 @@
 package pl.akademiakodu.superchat.models;
 
 import lombok.extern.java.Log;
+import org.apache.tomcat.jni.Local;
 import org.apache.tomcat.jni.Time;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -78,8 +79,9 @@ public class ChatSocket extends TextWebSocketHandler implements WebSocketConfigu
         if (userOptionsService.isRaisedMaxMessages(sender)) {
             return;
         }
-        adminOptionsService.checkIfMessageIsCommand(sender, message);
 
+        if(System.currentTimeMillis() - sender.getKickedTime().getMinute() > 1)
+        adminOptionsService.checkIfMessageIsCommand(sender, message);
 
         if (message.getPayload().equals("archiwum")) {
             userOptionsService.printHistory(sender);
@@ -101,6 +103,14 @@ public class ChatSocket extends TextWebSocketHandler implements WebSocketConfigu
         if (sender.isBanned()) {
             sender.getSession().sendMessage(new TextMessage("Nie mozesz pisac. Jesteś zbanowany!"));
             // becouse admin made him mute (isBanned==true)
+            LocalTime now = LocalTime.now();
+            LocalTime banned = sender.getKickedTime();
+            sender.sendMessage("Musisz poczekać jeszcze: " + Duration.between(now,banned).toMillis()/1000 + "sekund" );
+            if(Duration.between(now,banned).toMillis()/1000 < 0){
+                sender.setBanned(false);
+                sender.setCounter(0);
+                return;
+            }
             return;
         }
 

@@ -59,7 +59,7 @@ public class UserOptionsService {
                 sender.setKickedTime(LocalTime.now().plusMinutes(1));
                 sender.setCounter(0);
                 sender.sendMessage("Zostałeś zbanowany na 1 minutę");
-                //sender.setBanned(true);
+                sender.setBanned(true);
                 //sender.setEmpty(true);
                 System.out.println("BAN!");
                 return true;

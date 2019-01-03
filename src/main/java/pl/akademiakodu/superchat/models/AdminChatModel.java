@@ -33,6 +33,4 @@ public class AdminChatModel extends UserChatModel {
         this.password = password;
     }
 
-
-
 }

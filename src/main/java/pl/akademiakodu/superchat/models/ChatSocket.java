@@ -105,8 +105,8 @@ public class ChatSocket extends TextWebSocketHandler implements WebSocketConfigu
             // becouse admin made him mute (isBanned==true)
             LocalTime now = LocalTime.now();
             LocalTime banned = sender.getKickedTime();
-            sender.sendMessage("Musisz poczekać jeszcze: " + Duration.between(now,banned).toMillis()/1000 + "sekund" );
-            if(Duration.between(now,banned).toMillis()/1000 < 0){
+            sender.sendMessage("Musisz poczekać jeszcze: " + (30- Duration.between(banned,now).toMillis()/10000) + "sekund" );
+            if(Duration.between(banned,now).toMillis()/10000 > 30){
                 sender.setBanned(false);
                 sender.setCounter(0);
                 return;

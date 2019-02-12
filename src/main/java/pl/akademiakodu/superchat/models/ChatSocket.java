@@ -28,13 +28,13 @@ import java.util.*;
 @Log
 public class ChatSocket extends TextWebSocketHandler implements WebSocketConfigurer {
 
-@Autowired
+    @Autowired
     UserList userList;
-@Autowired
+    @Autowired
     UserLoginService userLoginService;
-@Autowired
+    @Autowired
     UserOptionsService userOptionsService;
-@Autowired
+    @Autowired
     AdminOptionsService adminOptionsService;
 
     @Override
@@ -57,7 +57,7 @@ public class ChatSocket extends TextWebSocketHandler implements WebSocketConfigu
 
         UserChatModel userChatModel = userList.findUserBySessionId(session).get();
         userChatModel.sendMessage("Witaj na chacie!");
-        userChatModel.sendMessage("Twoja pierwsza wiadomość jest Twoim nickiem");
+        userChatModel.sendMessage("Twoja pierwsza wiadomość będzie Twoim nickiem :)");
     }
 
     @Override
@@ -90,7 +90,7 @@ public class ChatSocket extends TextWebSocketHandler implements WebSocketConfigu
         }
 
         if (message.getPayload().isEmpty()) {
-            sender.getSession().sendMessage(new TextMessage("Nie mozesz wysłać pustej wiadomosci"));
+            sender.getSession().sendMessage(new TextMessage("Nie możesz wysłać pustej wiadomosci"));
             System.out.println("Nie możesz wysłać pustej wiadomości");
             return;
         }
@@ -121,7 +121,7 @@ public class ChatSocket extends TextWebSocketHandler implements WebSocketConfigu
 
 }
 
-/* Another version og printHistory:
+/* Another version of printHistory:
     private void sendMessageArchiveToUser(UserChatModel sender) throws IOException {
         for (String lastTenMessage : lastTenMessages) {
             sender.getSession().sendMessage(new TextMessage(lastTenMessage));

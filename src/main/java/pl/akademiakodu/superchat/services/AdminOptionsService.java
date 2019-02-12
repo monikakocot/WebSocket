@@ -12,10 +12,8 @@ import java.util.Optional;
 @Service
 public class AdminOptionsService {
 
-
     @Autowired
     UserList userList;
-
 
     public void checkIfMessageIsCommand(UserChatModel sender, TextMessage message) throws IOException {
         if (!isAdmin(sender)) {
@@ -32,8 +30,8 @@ public class AdminOptionsService {
                 userToMute = userToMuteOptional.get();
 
                 userToMute.setBanned(true);
-                sender.getSession().sendMessage(new TextMessage("Zmutowales popranie"));
-                userToMute.getSession().sendMessage(new TextMessage("Zostales zmutowany!@!@!@"));
+                sender.getSession().sendMessage(new TextMessage("Zmutowałeś poprawnie użytkownika: " + nick));
+                userToMute.getSession().sendMessage(new TextMessage("Zostałeś zmutowany!@!@!@"));
 
             }
 
@@ -56,8 +54,8 @@ public class AdminOptionsService {
                 userToMute = userToMuteOptional.get();
 
                 userToMute.setBanned(false);
-                sender.getSession().sendMessage(new TextMessage("Odblokowałeś poprawnie"));
-                userToMute.getSession().sendMessage(new TextMessage("Zostales odblokowany!@!@!@"));
+                sender.getSession().sendMessage(new TextMessage("Odblokowałeś poprawnie użytkownika: " + nick));
+                userToMute.getSession().sendMessage(new TextMessage("Zostałes odblokowany!@!@!@"));
 
             }
 

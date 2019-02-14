@@ -1,7 +1,7 @@
 # WebSocket
 Chat made with Web Socket technology.
 
-WebSocker Chat made with Java and Javascript.
+WebSocker Chat made with Java and Javascript. Chat application working on the TCP protocol. Additional functionalities for the chat administrator: blocking the user, re-unlocking, the system that automatically blocks the user when excessive spamming, with the ability to see archived messages.
 
 You can use it locally. I set it on port(s): 4242 (http).
 
